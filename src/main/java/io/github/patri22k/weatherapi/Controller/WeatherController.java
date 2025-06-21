@@ -76,7 +76,7 @@ public class WeatherController {
         } catch (JsonProcessingException e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error parsing cached weather data.");
+                    .body("Error parsing cached weather data: " + e);
         }
     }
 }

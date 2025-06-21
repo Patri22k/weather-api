@@ -1,6 +1,7 @@
 package io.github.patri22k.weatherapi.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +10,29 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CurrentConditionsModel {
 
-    private double temp;
+    private String datetime;
 
-    public double convertToCelsius() {
-        double celsius = (5d / 9d) * (temp - 32d);
-        return (double) Math.round((celsius * 100)) / 100;
+    private double temp;
+    private double feelslike;
+    private double humidity;
+
+    @JsonSetter("temp")
+    public void setTemp(double temp) {
+        this.temp = toCelsius(temp);
+    }
+
+    @JsonSetter("feelslike")
+    public void setFeelslike(double feelslike) {
+        this.feelslike = toCelsius(feelslike);
+    }
+
+    @JsonSetter("humidity")
+    public void setHumidity(double humidity) {
+        this.humidity = toCelsius(humidity);
+    }
+
+    public double toCelsius(double t) {
+        double celsius = (5d / 9d) * (t - 32d);
+        return (double) Math.round((celsius * 10)) / 10;
     }
 }
