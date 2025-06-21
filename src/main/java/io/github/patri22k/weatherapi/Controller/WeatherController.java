@@ -46,7 +46,7 @@ public class WeatherController {
 
         // 2. Check Cache Response
         if (cachedWeather != null) {
-            return getWeatherModel(cachedWeather);
+            return getWeatherModel("CACHE", cachedWeather);
         }
 
         // 3. Request Weather API and
@@ -56,23 +56,23 @@ public class WeatherController {
 
         // 5. Saved Cached Results
         if (response != null) {
-            ops.set(location, response, Duration.ofSeconds(10));
+            ops.set(location, response, Duration.ofMinutes(10));
 
             // 6. Return Response from 3rd Party
-            return getWeatherModel(response);
+            return getWeatherModel("API", response);
         }
 
         // Default response
         return ResponseEntity.noContent().build();
     }
 
-    private ResponseEntity<?> getWeatherModel(String response) {
+    private ResponseEntity<?> getWeatherModel(String resource, String response) {
         try {
             RawWeatherModel rawWeatherModel = objectMapper.readValue(response, RawWeatherModel.class);
             WeatherModel weatherModel = WeatherModel.createWeatherModel(rawWeatherModel);
             return ResponseEntity
                     .ok()
-                    .body(new WeatherWrapper("CACHE", weatherModel));
+                    .body(new WeatherWrapper(resource, weatherModel));
         } catch (JsonProcessingException e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
