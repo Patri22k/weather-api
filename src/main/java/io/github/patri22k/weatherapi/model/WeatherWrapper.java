@@ -1,4 +1,4 @@
-package io.github.patri22k.weatherapi.Model;
+package io.github.patri22k.weatherapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

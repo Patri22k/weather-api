@@ -1,4 +1,4 @@
-package io.github.patri22k.weatherapi.Service;
+package io.github.patri22k.weatherapi.service;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

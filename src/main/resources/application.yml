@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: weather-api
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+server:
+  port: ${SERVER_PORT:8080}
+
+weather:
+  url: ${WEATHER_BASE_URL:https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline}
+  api-key: ${WEATHER_API_KEY}
