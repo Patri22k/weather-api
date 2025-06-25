@@ -37,7 +37,7 @@ You can use [Postman](https://www.postman.com/downloads/) to
 create HTTP requests to use my weather API. My endpoint(s) is/are:
 - {{BASE_URL}}/weather?location=Bratislava
 
-*Note: default `{{BASE_URL}}` is `http://localhost:8080`
+*Note: default `{{BASE_URL}}` is `http://localhost:8080`*
 
 Both branches have default rate limiter set to 5req/min per IP address. I was
 inspired by a [geeksforgeeks website](https://www.geeksforgeeks.org/advance-java/implementing-rate-limiting-in-a-spring-boot-application/).
