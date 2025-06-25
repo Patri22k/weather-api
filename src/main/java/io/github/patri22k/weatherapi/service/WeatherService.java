@@ -1,10 +1,10 @@
-package io.github.patri22k.weatherapi.Service;
+package io.github.patri22k.weatherapi.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.patri22k.weatherapi.Model.RawWeatherModel;
-import io.github.patri22k.weatherapi.Model.WeatherModel;
-import io.github.patri22k.weatherapi.Model.WeatherWrapper;
+import io.github.patri22k.weatherapi.model.RawWeatherModel;
+import io.github.patri22k.weatherapi.model.WeatherModel;
+import io.github.patri22k.weatherapi.model.WeatherWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;

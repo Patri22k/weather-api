@@ -1,4 +1,4 @@
-package io.github.patri22k.weatherapi.Model;
+package io.github.patri22k.weatherapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;

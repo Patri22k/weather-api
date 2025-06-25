@@ -1,7 +1,7 @@
-package io.github.patri22k.weatherapi.Controller;
+package io.github.patri22k.weatherapi.controller;
 
-import io.github.patri22k.weatherapi.Service.RateLimiterService;
-import io.github.patri22k.weatherapi.Service.WeatherService;
+import io.github.patri22k.weatherapi.service.RateLimiterService;
+import io.github.patri22k.weatherapi.service.WeatherService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
