@@ -26,11 +26,6 @@ public class CurrentConditionsModel {
         this.feelslike = toCelsius(feelslike);
     }
 
-    @JsonSetter("humidity")
-    public void setHumidity(double humidity) {
-        this.humidity = toCelsius(humidity);
-    }
-
     public double toCelsius(double t) {
         double celsius = (5d / 9d) * (t - 32d);
         return (double) Math.round((celsius * 10)) / 10;

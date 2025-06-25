@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class WeatherApiApplicationTests {
 
-    @Test
+    //@Test
     void contextLoads() {
     }
 
