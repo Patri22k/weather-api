@@ -2,6 +2,7 @@ package io.github.patri22k.weatherapi.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.patri22k.weatherapi.exception.WeatherAPIRequestException;
 import io.github.patri22k.weatherapi.model.RawWeatherModel;
 import io.github.patri22k.weatherapi.model.WeatherModel;
 import io.github.patri22k.weatherapi.model.WeatherWrapper;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,8 +60,7 @@ public class WeatherService {
             return getWeatherModel("API", response);
         }
 
-        // Default response
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.internalServerError().build();
     }
 
     private ResponseEntity<?> getWeatherModel(String resource, String response) {
@@ -72,9 +71,7 @@ public class WeatherService {
                     .ok()
                     .body(new WeatherWrapper(resource, weatherModel));
         } catch (JsonProcessingException e) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error parsing cached weather data: " + e);
+            throw new WeatherAPIRequestException("Error parsing weather data from " + resource, e);
         }
     }
 
